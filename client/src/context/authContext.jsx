@@ -36,7 +36,6 @@ export function AuthProvider({ children }) {
 
   const login = useCallback(async (credentials) => {
     const { data } = await apiLogin(credentials);
-    console.info("DATA LOGIN: ", data);
     setUser(data);
     return data;
   }, []);

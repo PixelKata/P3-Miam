@@ -12,7 +12,6 @@ export default function SeeMoreRecipe() {
       .then((response) => setLittleRecipe(response.data))
       .catch((error) => console.error(error));
   };
-  console.info(littleRecipe);
 
   useEffect(() => {
     fetchData();

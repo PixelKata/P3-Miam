@@ -11,6 +11,7 @@ const RecipeStepRepository = require("./models/RecipeStepRepository");
 const CommentRepository = require("./models/CommentRepository");
 const CategoryRepository = require("./models/CategoryRepository");
 const FavoriteRepository = require("./models/FavoriteRepository");
+const RecipeIngredientRepository = require("./models/RecipeIngredientRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -29,6 +30,7 @@ tables.recipeStep = new RecipeStepRepository();
 tables.comment = new CommentRepository();
 tables.category = new CategoryRepository();
 tables.favorite = new FavoriteRepository();
+tables.recipeIngredient = new RecipeIngredientRepository();
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 
 export default function SignUp() {
+  const [errorMessage, setErrorMessage] = useState();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     civility: "0",
@@ -34,6 +35,11 @@ export default function SignUp() {
       }
     } catch (err) {
       console.error("Erreur lors de l'inscription : ", err);
+      if (err.response) {
+        setErrorMessage(err.response.data.error || "Une erreur est survenue");
+      } else {
+        setErrorMessage("Impossible de contacter le serveur");
+      }
     }
   };
 
@@ -111,6 +117,7 @@ export default function SignUp() {
         </section>
       </div>
       <button type="submit">Je crée mon compte</button>
+      {errorMessage ? <p>{errorMessage}</p> : null}
     </form>
   );
 }
