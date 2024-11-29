@@ -2,11 +2,10 @@ import axios from "axios";
 
 const handleDeleteRecipe = async (recipeId, navigate) => {
   try {
-    const response = await axios.delete(
+    await axios.delete(
       `${import.meta.env.VITE_API_URL}/api/recipes/${recipeId}`,
       { withCredentials: true }
     );
-    console.info("Suppression réussie:", response.data);
     navigate("/");
   } catch (error) {
     if (error.response) {

@@ -28,14 +28,14 @@ const browseFilteredRecipes = async (req, res, next) => {
       category,
       difficulty,
       limit: parseInt(pageSize, 10),
-      offset: parseInt(offset, 10)
+      offset: parseInt(offset, 10),
     });
 
     res.json(recipes);
   } catch (error) {
     next(error);
   }
-}
+};
 
 const read = async (req, res, next) => {
   try {
@@ -70,10 +70,15 @@ const edit = async (req, res, next) => {
 
 const add = async (req, res, next) => {
   try {
-
-
-    const { title, description, steps, difficulty, category, filename } =
-      req.body;
+    const {
+      title,
+      description,
+      ingredients,
+      steps,
+      difficulty,
+      category,
+      filename,
+    } = req.body;
     const { id } = req.user;
     const recipeId = await tables.recipe.create({
       userId: id,
@@ -90,6 +95,9 @@ const add = async (req, res, next) => {
         number: step.step_number,
         description: step.content,
       });
+    });
+    (await JSON.parse(ingredients)).forEach((ingredient) => {
+      tables.recipeIngredient.create(recipeId, ingredient.id, 10, "g");
     });
     res.status(200).json({ success: true, recipeId });
   } catch (err) {
@@ -108,8 +116,6 @@ const destroy = async (req, res, next) => {
     if (!recipe) {
       return res.status(404).json({ message: "Recette non trouvée." });
     }
-
-    console.info(`Recipe owner ID: ${recipe.user_id}`);
 
     if (
       parseInt(recipe.user_id, 10) !== parseInt(userId, 10) &&

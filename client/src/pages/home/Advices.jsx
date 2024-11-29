@@ -6,7 +6,6 @@ import egg from "../../assets/images/oeuf.png";
 import "../../styles/home/advice.css";
 
 export default function Advices({ advices }) {
-  console.info(advices);
   return (
     <section className="star">
       <img src={egg} alt="Oeuf" />

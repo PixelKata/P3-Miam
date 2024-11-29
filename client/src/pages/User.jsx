@@ -18,7 +18,6 @@ export default function User({ username, description }) {
       Promise.all([getUserFavorite(user.id), getUserRecipe(user.id)]).then(
         (response) => {
           setFavoriteRecipes(response[0]);
-          console.info(response);
           setLatestRecipes(response[1]);
         }
       );

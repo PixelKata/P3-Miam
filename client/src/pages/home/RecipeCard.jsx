@@ -12,10 +12,6 @@ export default function RecipeCard() {
       .then((response) => setRecipe(response.data[0]))
       .catch((error) => console.error(error));
   };
-  console.info(recipe);
-  console.info(
-    `${import.meta.env.VITE_API_URL}/public/upload/${recipe.image_url}`
-  );
   useEffect(() => {
     fetchData();
   }, []);

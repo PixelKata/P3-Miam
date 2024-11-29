@@ -15,7 +15,6 @@ const read = async (req, res, next) => {
       Number(req.params.id)
     );
 
-    console.info(category);
     if (category != null) {
       res.status(200).json(category);
     } else {
