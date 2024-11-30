@@ -57,7 +57,7 @@ export default function RecipeSteps({ steps, updateSteps }) {
                   className="step-input"
                 />
                 <button
-                  className="delete-button"
+                  className="trash-button"
                   type="button"
                   onClick={() => deleteStep(step.id)}
                 >

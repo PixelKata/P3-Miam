@@ -77,8 +77,7 @@ const verifyToken = (req, res, next) => {
       return res.status(401).json({ message: "Aucun token fourni." });
     }
 
-    const verified = jwt.verify(auth, process.env.APP_SECRET);
-    req.user = verified;
+    req.user = jwt.verify(auth, process.env.APP_SECRET);
     return next();
   } catch (error) {
     if (error.name === "JsonWebTokenError") {

@@ -58,10 +58,11 @@ export default function CreateRecipe() {
           },
         }
       );
-      console.info("Response request submit recipe: ", response);
-      if ("recipeId" in response.data)
-        navigate(`/recipes-instruction/${response.data.recipeId}`);
-      else navigate("/");
+      setTimeout(() => {
+        if ("recipeId" in response.data)
+          navigate(`/recipes-instruction/${response.data.recipeId}`);
+        else navigate("/");
+      }, 1000);
     } catch (error) {
       console.error("Erreur lors de l'envoi de la recette:", error);
     }

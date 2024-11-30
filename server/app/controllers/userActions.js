@@ -9,7 +9,6 @@ const browse = async (req, res, next) => {
     } else {
       res.json({ message: "Aucun utilisateur", result: users });
     }
-    console.info(users);
   } catch (err) {
     next(err);
   }
@@ -17,7 +16,7 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const user = await tables.user.read(req.params.id);
+    const user = await tables.user.read(req.user.id);
     if (user == null) {
       res.sendStatus(404);
     } else {
@@ -30,7 +29,6 @@ const read = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   const user = req.body;
-  console.info(req.body);
 
   try {
     const affectedRows = await tables.user.update(req.params.id, user);
