@@ -15,7 +15,7 @@ const messages = {
   "string.email": "Le champ {{#label}} doit être une adresse email valide",
   "any.required": "Le champ {{#label}} est requis",
   "string.pattern.base":
-    "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial",
+    "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial [@$!%*?&]",
   "number.min": "Le champ {{#label}} doit être supérieur ou égal à {{#limit}}",
   "number.max": "Le champ {{#label}} doit être inférieur ou égal à {{#limit}}",
 };

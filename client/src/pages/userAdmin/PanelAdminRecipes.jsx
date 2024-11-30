@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "../../styles/panelAdmin/AdminRecipes.css";
@@ -6,6 +6,8 @@ import "../../styles/panelAdmin/AdminRecipes.css";
 export default function AdminRecipe() {
   const loadedRecipes = useLoaderData();
   const [recipes, setRecipes] = useState(loadedRecipes);
+
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
     setRecipes((prevRecipes) =>
@@ -58,6 +60,13 @@ export default function AdminRecipe() {
           </div>
         ))}
       </div>
+      <button
+        className="back-button"
+        type="button"
+        onClick={() => navigate("/panel-admin")}
+      >
+        Retour
+      </button>
     </div>
   );
 }
