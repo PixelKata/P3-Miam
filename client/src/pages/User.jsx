@@ -15,12 +15,12 @@ export default function User({ username, description }) {
 
   useEffect(() => {
     if (user) {
-      Promise.all([getUserFavorite(user.id), getUserRecipe(user.id)]).then(
-        (response) => {
-          setFavoriteRecipes(response[0]);
-          setLatestRecipes(response[1]);
-        }
-      );
+      getUserFavorite(user.id).then((data) => {
+        setFavoriteRecipes(data);
+      });
+      getUserRecipe(user.id).then((data) => {
+        setLatestRecipes(data);
+      });
     }
   }, [user]);
 
@@ -56,9 +56,6 @@ export default function User({ username, description }) {
             Ajouter une nouvelle recette
           </button>
         </Link>
-        <button type="button" className="edit-recipe-button">
-          Modifier une recette
-        </button>
 
         {isAdmin && (
           <Link to="/panel-admin">
